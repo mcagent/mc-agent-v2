@@ -173,6 +173,12 @@ def ubah_clients(uid):
   user['id'] = uid
   return render_template('ubah_clients.html', user = user)
 
+@app.route('/clients/hapus/<uid>')
+def hapus_clients(uid):
+  dataBase.collection('users').document(uid).delete()
+  flash('Data User berhasil dihapus', 'danger')
+  return redirect(url_for('clients'))
+
 @app.route('/agents')
 @login_required
 def agents():
