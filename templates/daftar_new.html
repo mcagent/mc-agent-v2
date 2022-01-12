@@ -4,6 +4,9 @@
 {% block _content %}
 
 <style>
+  body{
+    height: 3000px;
+  }
   @media (max-width: 576px) {
     .tes{
       font-size: 11px;
@@ -44,7 +47,7 @@
           <div class="row">
             <div class="col-lg-5">
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="OP" id="op" name="op">
+                <input class="form-check-input" type="checkbox" value="Orang Pribadi" id="op" name="op">
                 <label class="form-check-label" for="op">
                   Orang Pribadi
                 </label>
@@ -64,7 +67,7 @@
             </div>
             <div class="col-lg-7">
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="IMM" id="imm" name="imm">
+                <input class="form-check-input" type="checkbox" value="Istri memilih menjalankan" id="imm" name="imm">
                 <label class="form-check-label" for="imm">
                   Istri memilih menjalankan
                 </label>
@@ -145,7 +148,7 @@
           <label for="namaWP" class="col-lg-2 col-form-label">Status Nikah</label>
           <div class="col-lg-10">
             <select class="form-select" aria-label="Default select example">
-              <option selected value="tidak kawin">Tidak Kawin</option>
+              <option selected value="tidak kawin">Belum Kawin</option>
               <option value="kawin">Kawin</option>
             </select>
           </div>
@@ -185,9 +188,252 @@
       </div>
       <div class="tab">
         <h5>C. Sumber Penghasilan Pertama</h5>
+        <p class="text-secondary">Pekerjaan dalam hubungan kerja</p>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-5">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="PNS" id="pns" name="pns">
+                <label class="form-check-label" for="pns">
+                  PNS
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="TNI / Polri" id="tniPolri" name="tniPolri">
+                <label class="form-check-label" for="tniPolri">
+                  TNI / Polri
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Pensiunan" id="pensiun" name="pensiun">
+                <label class="form-check-label" for="pensiun">
+                  Pensiunan
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Pegawai Swasta" id="pSwasta" name="pSwasta">
+                <label class="form-check-label" for="pSwasta">
+                  Pegawai Swasta
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Pegawai BUMN / BUMD" id="bumnd" name="bumnd">
+                <label class="form-check-label" for="bumnd">
+                  Pegawai BUMN / BUMD
+                </label>
+              </div>
+            </div>
+            <div class="col-lg-7">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Pegawai Badan Publik" id="pbp" name="pbp">
+                <label class="form-check-label" for="pbp">
+                  Pegawai Badan Publik
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Pejabat Negara / Daerah" id="pnd" name="pnd">
+                <label class="form-check-label" for="pnd">
+                  Pejabat Negara / Daerah
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Pekerja tidak termasuk subjek pajak" id="tidakPajak" name="tidakPajak">
+                <label class="form-check-label" for="tidakPajak">
+                  Pekerja pada pemberi kerja yang tidak termasuk sebagai subjek pajak
+                </label>
+              </div>
+              <div class="row g-3 align-items-center">
+                <div class="col-auto">
+                  <label for="pegawaiLain" class="col-form-label">Pegawai Lainnya</label>
+                </div>
+                <div class="col-auto">
+                  <input type="password" id="pegawaiLain" name="pegawaiLain" class="form-control" aria-describedby="passwordHelpInline">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <p class="text-secondary">Kegiatan Usaha</p>
+        <div class="container">
+          <div class="mb-3 row">
+            <label for="kegUsaha" class="col-lg-2 col-form-label">Kegiatan Usaha</label>
+            <div class="col-lg-10">
+              <input type="text" class="form-control" id="kegUsaha" name="kegUsaha">
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="merkDagUsh" class="col-lg-2 col-form-label">Merk Dagang/Usaha</label>
+            <div class="col-lg-10">
+              <input type="text" class="form-control" id="merkDagUsh" name="merkDagUsh">
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="karyawan" class="col-lg-2 col-form-label">Memiliki Karyawan</label>
+            <div class="col-lg-4">
+              <select class="form-select" aria-label="Default select example" id="karyawan" name="karyawan">
+                <option selected value="ya">Ya</option>
+                <option value="tidak">Tidak</option>
+              </select>
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="metode" class="col-lg-2 col-form-label">Metode</label>
+            <div class="col-lg-4">
+              <select class="form-select" aria-label="Default select example" id="metode" name="metode">
+                <option selected value="Pembukuan">Pembukuan</option>
+                <option value="Pencatatan">Pencatatan</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <p class="text-secondary">Pekerjaan Bebas</p>
+        <div class="container">
+          <div class="mb-3 row">
+            <label for="kerjaBebas" class="col-lg-2 col-form-label">Pekerjaan Bebas</label>
+            <div class="col-lg-10">
+              <input type="text" class="form-control" id="kerjaBebas" name="kerjaBebas">
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="PBmerkDagUsh" class="col-lg-2 col-form-label">Merk Dagang/Usaha</label>
+            <div class="col-lg-10">
+              <input type="text" class="form-control" id="PBmerkDagUsh" name="PBmerkDagUsh">
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="PBkaryawan" class="col-lg-2 col-form-label">Memiliki Karyawan</label>
+            <div class="col-lg-4">
+              <select class="form-select" aria-label="Default select example" id="PBkaryawan" name="PBkaryawan">
+                <option selected value="ya">Ya</option>
+                <option value="tidak">Tidak</option>
+              </select>
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="PBmetode" class="col-lg-2 col-form-label">Metode</label>
+            <div class="col-lg-4">
+              <select class="form-select" aria-label="Default select example" id="PBmetode" name="PBmetode">
+                <option selected value="Pembukuan">Pembukuan</option>
+                <option value="Pencatatan">Pencatatan</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <p class="text-secondary">Lainnya</p>
+        <div class="container">
+          <div class="mb-3 row">
+            <label for="lainnya" class="col-lg-2 col-form-label">Lainnya</label>
+            <div class="col-lg-10">
+              <input type="text" class="form-control" id="lainnya" name="lainnya">
+            </div>
+          </div>
+        </div>
       </div>
-      <p class="text-secondary">Pekerjaan dalam hubungan kerja</p>
-      <div class="container">
-        
+      <div class="tab">
+        <h5>D. Alamat Tempat Tinggal</h5>
+        <div class="mb-3 row">
+          <label for="jalan" class="col-lg-2 col-form-label">Jalan</label>
+          <div class="col-lg-10">
+            <input type="text" class="form-control" id="jalan" name="jalan">
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="blok" class="col-lg-2 col-form-label">Blok</label>
+          <div class="col-lg-4">
+            <input type="text" class="form-control" id="blok" name="blok">
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="nomor" class="col-lg-2 col-form-label">Nomor</label>
+          <div class="col-lg-4">
+            <input type="text" class="form-control" id="nomor" name="nomor">
+          </div>
+          <label for="rtrw" class="col-lg-2 col-form-label">RT / RW</label>
+          <div class="col-lg-1">
+            <input type="text" class="form-control" id="rt" name="rt" placeholder="RT">
+          </div>
+          <div class="col-lg-1">
+            <input type="text" class="form-control" id="rw" name="rw" placeholder="RW">
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="kodeWilayah" class="col-lg-2 col-form-label">Kode Wilayah</label>
+          <div class="col-lg-10">
+            <input type="search" class="form-control" id="kodeWilayah" name="kodeWilayah" placeholder="Cari">
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="lurahDesa" class="col-lg-2 col-form-label">Kelurahan / Desa</label>
+          <div class="col-lg-10">
+            <input type="search" class="form-control" id="lurahDesa" name="lurahDesa">
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="kecamatan" class="col-lg-2 col-form-label">Kecamatan</label>
+          <div class="col-lg-10">
+            <input type="search" class="form-control" id="kecamatan" name="kecamatan">
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="kabKota" class="col-lg-2 col-form-label">Kab. / Kota</label>
+          <div class="col-lg-10">
+            <input type="search" class="form-control" id="kabKota" name="kabKota">
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="provinsi" class="col-lg-2 col-form-label">Provinsi</label>
+          <div class="col-lg-10">
+            <input type="search" class="form-control" id="provinsi" name="provinsi">
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="kodePos" class="col-lg-2 col-form-label">Kode POS</label>
+          <div class="col-lg-10">
+            <input type="search" class="form-control" id="kodePos" name="kodePos">
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="telpFax" class="col-lg-2 col-form-label">TELP. / FAX</label>
+          <div class="col-lg-5">
+            <input type="search" class="form-control" id="telp" name="telp" placeholder="Telepon">
+          </div>
+          <div class="col-lg-5">
+            <input type="search" class="form-control" id="fax" name="fax" placeholder="FAX">
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="handphone" class="col-lg-2 col-form-label">No. Handphone</label>
+          <div class="col-lg-10">
+            <input type="search" class="form-control" id="handphone" name="handphone">
+          </div>
+        </div>
       </div>
+      <div class="tab">
+        <h5>G. Info Tambahan</h5>
+        <div class="mb-3 row">
+          <label for="tanggungan" class="col-lg-2 col-form-label">Jumlah Tanggungan</label>
+          <div class="col-lg-10">
+            <input type="text" class="form-control" id="tanggungan" name="tanggungan">
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="metode" class="col-lg-2 col-form-label">Kisaran Penghasilan</label>
+          <div class="col-lg-10">
+            <select class="form-select" aria-label="Default select example" id="metode" name="metode">
+              <option selected value="">Per Bulan</option>
+              <option value="≤ Rp 2.000.000">≤ Rp 2.000.000</option>
+              <option value="Rp 2.000.000 - Rp 4.999.999">Rp 2.000.000 - Rp 4.999.999</option>
+              <option value="Rp 5.000.000 - Rp 9.999.999">Rp 5.000.000 - Rp 9.999.999</option>
+              <option value="Rp 10.000.000 - Rp 19.999.999">Rp 10.000.000 - Rp 19.999.999</option>
+              <option value="≥ Rp 20.000.000">≥ Rp 20.000.000</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
 {% endblock %}
