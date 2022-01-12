@@ -1,0 +1,63 @@
+{% set page_title = '| Clients' %}
+{% set title = '' %}
+{% extends 'base.html' %}
+{% block _content %}
+<div class="card">
+  <div class="card-header">
+    <span><i class="bi bi-table me-2"></i></span> Data Clients
+  </div>
+  <div class="card-body">
+    <div class="container text-center" style="width: 70%;">
+      {% with messages = get_flashed_messages(with_categories = true) %}
+      {% if messages %}
+      {% for category, message in messages %}
+      <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      {% endfor %}
+      {% endif %}
+      {% endwith %}
+    </div>
+    <div class="table-responsive">
+      <table id="example" class="table table-striped data-table" style="width: 100%">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>NPWP</th>
+            <th>Company</th>
+            <th>Address</th>
+            <th>Access Level</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        {% for c in data %}
+        <tbody>
+          <tr>
+            <td>{{ c['nama'] }}</td>
+            <td>{{ c['npwp'] }}</td>
+            <td>{{ c['company'] }}</td>
+            <td>{{ c['alamat'] }}</td>
+            <td>{{ c['levelAkses'] }}</td>
+            <td>
+              <a href="/clients/ubah/{{ c.id }}">Ubah |</a>
+              <a href="/clients/hapus/{{ c.id }}">Hapus</a>
+            </td>
+          </tr>
+        </tbody>
+        {% endfor %}
+        <tfoot>
+          <tr>
+            <th>Name</th>
+            <th>NPWP</th>
+            <th>Company</th>
+            <th>Address</th>
+            <th>Access Level</th>
+            <th>Action</th>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

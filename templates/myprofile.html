@@ -1,0 +1,42 @@
+{% set page_title = '| My Profile' %} 
+{% set title = 'My Profile' %} 
+{% extends 'base.html' %} 
+{% block _content %} 
+<div class="container-fluid">
+  <div class="container text-center" style="width: 70%;">
+    {% with messages = get_flashed_messages(with_categories = true) %}
+    {% if messages %}
+    {% for category, message in messages %}
+    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+      {{ message }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+  </div>
+  <ul class="list-group">
+    <li class="list-group-item list-group-item-action">
+      Nama : {{ session.user.nama }}
+    </li>
+    <li class="list-group-item list-group-item-action">
+      Username : {{ session.user.username }}
+    </li>
+    <li class="list-group-item list-group-item-action">
+      Email : {{ session.user.email }}
+    </li>
+    <li class="list-group-item list-group-item-action">
+      Alamat : {{ session.user.alamat }}
+    </li>
+    <li class="list-group-item list-group-item-action">
+      Perusahaan : {{ session.user.company }}
+    </li>
+    <li class="list-group-item list-group-item-action">
+      NPWP : {{ session.user.npwp }}
+    </li>
+  </ul>
+  
+  <a href="/myprofile/ubah/{{ session.userId }}"><button type="button" class="btn text-dark btn-warning mt-3">Lengkapi / Ubah Profil Anda</button></a>
+  
+</div>
+{% endblock %}

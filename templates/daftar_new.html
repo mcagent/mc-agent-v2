@@ -1,0 +1,193 @@
+{% set page_title = '| Daftar' %} 
+{% set title = 'Formulir Registrasi Data WP' %} 
+{% extends 'base.html' %} 
+{% block _content %}
+
+<style>
+  @media (max-width: 576px) {
+    .tes{
+      font-size: 11px;
+    }
+  }
+  @media (max-width: 768px) {
+    .tes{
+      font-size: 15px;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .tes{
+      font-size: 15px;
+    }
+  }
+  
+  @media (max-width: 1200px) {
+    .tes{
+      font-size: 15px;
+    }
+  }
+  
+  @media (max-width: 1400px) {
+    .tes{
+      font-size: 15px;
+    }
+  }
+</style>
+
+<form action="#" id="form">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="tab">
+        <h5>A. Kategori Wajib Pajak</h5>
+        <p class="text-secondary">Kategori Wajib Pajak<span class="text-danger">*</span></p>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-5">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="OP" id="op" name="op">
+                <label class="form-check-label" for="op">
+                  Orang Pribadi
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="HB" id="hb" name="hb">
+                <label class="form-check-label" for="hb">
+                  Wanita yang telah hidup berpisah berdasarkan keputusan hakim (HB)
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="PH" id="ph" name="ph">
+                <label class="form-check-label" for="ph">
+                  Istri dengan perjanjian pemisahan harta dan penghasilan (PH)
+                </label>
+              </div>
+            </div>
+            <div class="col-lg-7">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="IMM" id="imm" name="imm">
+                <label class="form-check-label" for="imm">
+                  Istri memilih menjalankan
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="WBT" id="wbt" name="wbt">
+                <label class="form-check-label" for="wbt">
+                  Warisan yang belum terbagi sebagai satu kesatuan menggantikan yang berhak (WBT)
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="text-secondary">Status Pusat - Cabang<span class="text-danger">*</span></p>
+        <div class="container">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="PUSAT" id="pusat" name="pusat">
+            <label class="form-check-label" for="pusat">
+              PUSAT
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="Cabang" id="cabang" name="cabang">
+            <label class="form-check-label" for="cabang">
+              Cabang
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="OPPT" id="oopt" name="oopt">
+            <label class="form-check-label" for="oopt">
+              OPPT
+            </label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="mb-3">
+              <label for="npwpSuami" class="form-label text-secondary">NPWP Suami</label>
+              <input type="text" class="form-control" id="npwpSuami" name="npwpSuami">
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="mb-3">
+              <label for="npwpPusat" class="form-label text-secondary">NPWP Pusat</label>
+              <input type="text" class="form-control" id="npwpPusat" name="npwpPusat">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab">
+        <h5>B. Identitas Wajib Pajak</h5>
+        <div class="mb-3 row">
+          <label for="namaWP" class="col-lg-2 col-form-label">Nama Wajib Pajak</label>
+          <div class="col-lg-10">
+            <input type="text" class="form-control" id="namaWP" name="namaWP">
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="gelarDp" class="col-lg-2 col-form-label">Gelar Depan</label>
+          <div class="col-lg-4">
+            <input type="text" class="form-control" id="gelarDp" name="gelarDp">
+          </div>
+          <label for="gelarBl" class="col-lg-2 col-form-label">Gelar Belakang</label>
+          <div class="col-lg-4">
+            <input type="text" class="form-control" id="gelarBl" name="gelarBl">
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="ttl" class="col-lg-2 col-form-label">Tempat Tgl. Lhr.</label>
+          <div class="col-lg-4">
+            <input type="text" class="form-control" id="tempat" name="tempat">
+          </div>
+          <div class="col-lg-4">
+            <input type="date" class="form-control" id="tLahir" name="tLahir">
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="namaWP" class="col-lg-2 col-form-label">Status Nikah</label>
+          <div class="col-lg-10">
+            <select class="form-select" aria-label="Default select example">
+              <option selected value="tidak kawin">Tidak Kawin</option>
+              <option value="kawin">Kawin</option>
+            </select>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="namaWP" class="col-lg-2 col-form-label">Kebangsaan</label>
+          <div class="col-lg-4">
+            <select class="form-select" aria-label="Default select example">
+              <option selected value="">-- Pilih --</option>
+              <option value="wni">Warga Negara Indonesia (WNI)</option>
+              <option value="wna">Warga Negara Asing (WNA)</option>
+            </select>
+          </div>
+          <label for="namaWP" class="col-lg-2 col-form-label">NIK/No. Passport</label>
+          <div class="col-lg-4">
+            <input type="text" class="form-control" id="namaWP">
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="namaWP" class="col-lg-2 col-form-label">Nomor Telepon</label>
+          <div class="col-lg-10">
+            <input type="text" class="form-control" id="namaWP">
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="namaWP" class="col-lg-2 col-form-label">Nomor HP</label>
+          <div class="col-lg-10">
+            <input type="text" class="form-control" id="namaWP">
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="namaWP" class="col-lg-2 col-form-label">Email</label>
+          <div class="col-lg-10">
+            <input type="text" class="form-control" id="namaWP">
+          </div>
+        </div>
+      </div>
+      <div class="tab">
+        <h5>C. Sumber Penghasilan Pertama</h5>
+      </div>
+      <p class="text-secondary">Pekerjaan dalam hubungan kerja</p>
+      <div class="container">
+        
+      </div>
+{% endblock %}

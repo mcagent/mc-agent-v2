@@ -1,0 +1,313 @@
+{% set page_title = '| Daftar' %} 
+{% set title = 'Formulir Registrasi Data WP' %} 
+{% extends 'base.html' %} 
+{% block _content %}
+
+<style>
+  @keyframes animated {
+    from {
+      transform: scale(1,0);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1,1);
+      opacity: 1;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .tes{
+      font-size: 11px;
+    }
+  }
+  @media (max-width: 768px) {
+    .tes{
+      font-size: 15px;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .tes{
+      font-size: 15px;
+    }
+  }
+  
+  @media (max-width: 1200px) {
+    .tes{
+      font-size: 15px;
+    }
+  }
+  
+  @media (max-width: 1400px) {
+    .tes{
+      font-size: 15px;
+    }
+  }
+</style>
+
+<form action="#" id="form">
+  <div class="row">
+    <div class="col-lg-3">
+      <ul class="list-group tes progress-step">
+        <li class="list-group-item active"> 1. Kategori</li>
+        <li class="list-group-item">2. Identitas</li>
+        <li class="list-group-item">3. Penghasilan</li>
+        <li class="list-group-item">4. Alamat</li>
+        <li class="list-group-item">5. Alamat Domisili <br> (KTP)</li>
+        <li class="list-group-item">6. Alamat Usaha</li>
+        <li class="list-group-item">7. Info Tambahan</li>
+        <li class="list-group-item">8. Persyaratan</li>
+        <li class="list-group-item">9. Pernyataan</li>
+      </ul>
+    </div>
+    <div class="col-lg-9">
+      <div class="progress my-3">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 10%"></div>
+      </div>
+      <!-- Steps -->
+      <div class="tab form-step form-step-active">
+        <h5>A. Kategori Wajib Pajak</h5>
+        <p class="text-secondary">Kategori Wajib Pajak<span class="text-danger">*</span></p>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-5">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="OP" id="op" name="op">
+                <label class="form-check-label" for="op">
+                  Orang Pribadi
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="HB" id="hb" name="hb">
+                <label class="form-check-label" for="hb">
+                  Wanita yang telah hidup berpisah berdasarkan keputusan hakim (HB)
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="PH" id="ph" name="ph">
+                <label class="form-check-label" for="ph">
+                  Istri dengan perjanjian pemisahan harta dan penghasilan (PH)
+                </label>
+              </div>
+            </div>
+            <div class="col-lg-7">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="IMM" id="imm" name="imm">
+                <label class="form-check-label" for="imm">
+                  Istri memilih menjalankan
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="WBT" id="wbt" name="wbt">
+                <label class="form-check-label" for="wbt">
+                  Warisan yang belum terbagi sebagai satu kesatuan menggantikan yang berhak (WBT)
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="text-secondary">Status Pusat - Cabang<span class="text-danger">*</span></p>
+        <div class="container">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="PUSAT" id="pusat" name="pusat">
+            <label class="form-check-label" for="pusat">
+              PUSAT
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="Cabang" id="cabang" name="cabang">
+            <label class="form-check-label" for="cabang">
+              Cabang
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="OPPT" id="oopt" name="oopt">
+            <label class="form-check-label" for="oopt">
+              OPPT
+            </label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="mb-3">
+              <label for="npwpSuami" class="form-label text-secondary">NPWP Suami</label>
+              <input type="text" class="form-control" id="npwpSuami" name="npwpSuami">
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="mb-3">
+              <label for="npwpPusat" class="form-label text-secondary">NPWP Pusat</label>
+              <input type="text" class="form-control" id="npwpPusat" name="npwpPusat">
+            </div>
+          </div>
+        </div>
+        <div class="">
+          <div class="row justify-content-between">
+            <div class="col-4">
+            </div>
+            <div class="col-4 text-end">
+              <button class="btn btn-primary btn-next" type="button">Next</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab form-step">
+        <h5>B. Identitas Wajib Pajak</h5>
+        <div class="mb-3 row">
+          <label for="namaWP" class="col-lg-2 col-form-label" style="font-size: 12px;" >Nama Wajib Pajak</label>
+          <div class="col-lg-10">
+            <input type="text" class="form-control" id="namaWP">
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="namaWP" class="col-lg-2 col-form-label" style="font-size: 12px;" >Gelar Depan</label>
+          <div class="col-lg-4">
+            <input type="text" class="form-control" id="namaWP">
+          </div>
+          <label for="namaWP" class="col-lg-2 col-form-label" style="font-size: 12px;" >Gelar Belakang</label>
+          <div class="col-lg-4">
+            <input type="text" class="form-control" id="namaWP">
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="namaWP" class="col-lg-2 col-form-label" style="font-size: 12px;" >Tempat Tgl. Lhr.</label>
+          <div class="col-lg-4">
+            <input type="text" class="form-control" id="namaWP">
+          </div>
+          <div class="col-lg-4">
+            <input type="date" class="form-control" id="namaWP">
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="namaWP" class="col-lg-2 col-form-label" style="font-size: 12px;" >Status Nikah</label>
+          <div class="col-lg-10">
+            <select class="form-select" aria-label="Default select example">
+              <option selected value="tidak kawin">Tidak Kawin</option>
+              <option value="kawin">Kawin</option>
+            </select>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="namaWP" class="col-lg-2 col-form-label" style="font-size: 12px;" >Kebangsaan</label>
+          <div class="col-lg-4">
+            <select class="form-select" aria-label="Default select example">
+              <option selected value="">-- Pilih --</option>
+              <option value="wni">Warga Negara Indonesia (WNI)</option>
+              <option value="wna">Warga Negara Asing (WNA)</option>
+            </select>
+          </div>
+          <label for="namaWP" class="col-lg-2 col-form-label" style="font-size: 12px;" >NIK/No. Passport</label>
+          <div class="col-lg-4">
+            <input type="text" class="form-control" id="namaWP">
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="namaWP" class="col-lg-2 col-form-label" style="font-size: 12px;" >Nomor Telepon</label>
+          <div class="col-lg-10">
+            <input type="text" class="form-control" id="namaWP">
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="namaWP" class="col-lg-2 col-form-label" style="font-size: 12px;" >Nomor HP</label>
+          <div class="col-lg-10">
+            <input type="text" class="form-control" id="namaWP">
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="namaWP" class="col-lg-2 col-form-label" style="font-size: 12px;" >Email</label>
+          <div class="col-lg-10">
+            <input type="text" class="form-control" id="namaWP">
+          </div>
+        </div>
+        <div class="btns-group">
+          <div class="row justify-content-between">
+            <div class="col-4">
+              <button class="btn btn-primary btn-prev" type="button">Previous</button>
+            </div>
+            <div class="col-4 text-end">
+              <button class="btn btn-primary btn-next" type="button">Next</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab form-step">
+        <h5>C. Identitas Wajib Pajak</h5>
+        <div class="mb-3 row">
+          <label for="namaWP" class="col-lg-2 col-form-label" style="font-size: 12px;" >Nama Wajib Pajak</label>
+          <div class="col-lg-10">
+            <input type="text" class="form-control" id="namaWP">
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="namaWP" class="col-lg-2 col-form-label" style="font-size: 12px;" >Gelar Depan</label>
+          <div class="col-lg-4">
+            <input type="text" class="form-control" id="namaWP">
+          </div>
+          <label for="namaWP" class="col-lg-2 col-form-label" style="font-size: 12px;" >Gelar Belakang</label>
+          <div class="col-lg-4">
+            <input type="text" class="form-control" id="namaWP">
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="namaWP" class="col-lg-2 col-form-label" style="font-size: 12px;" >Tempat Tgl. Lhr.</label>
+          <div class="col-lg-4">
+            <input type="text" class="form-control" id="namaWP">
+          </div>
+          <div class="col-lg-4">
+            <input type="date" class="form-control" id="namaWP">
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="namaWP" class="col-lg-2 col-form-label" style="font-size: 12px;" >Status Nikah</label>
+          <div class="col-lg-10">
+            <select class="form-select" aria-label="Default select example">
+              <option selected value="tidak kawin">Tidak Kawin</option>
+              <option value="kawin">Kawin</option>
+            </select>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="namaWP" class="col-lg-2 col-form-label" style="font-size: 12px;" >Kebangsaan</label>
+          <div class="col-lg-4">
+            <select class="form-select" aria-label="Default select example">
+              <option selected value="">-- Pilih --</option>
+              <option value="wni">Warga Negara Indonesia (WNI)</option>
+              <option value="wna">Warga Negara Asing (WNA)</option>
+            </select>
+          </div>
+          <label for="namaWP" class="col-lg-2 col-form-label" style="font-size: 12px;" >NIK/No. Passport</label>
+          <div class="col-lg-4">
+            <input type="text" class="form-control" id="namaWP">
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="namaWP" class="col-lg-2 col-form-label" style="font-size: 12px;" >Nomor Telepon</label>
+          <div class="col-lg-10">
+            <input type="text" class="form-control" id="namaWP">
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="namaWP" class="col-lg-2 col-form-label" style="font-size: 12px;" >Nomor HP</label>
+          <div class="col-lg-10">
+            <input type="text" class="form-control" id="namaWP">
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="namaWP" class="col-lg-2 col-form-label" style="font-size: 12px;" >Email</label>
+          <div class="col-lg-10">
+            <input type="text" class="form-control" id="namaWP">
+          </div>
+        </div>
+        <div class="row justify-content-between">
+          <div class="col-4">
+            <button class="btn btn-primary btn-prev" type="button">Previous</button>
+          </div>
+          <div class="col-4 text-end">
+            <button class="btn btn-primary" type="submit">Submit</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

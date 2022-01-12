@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "mitra-cemerlang",
+  "private_key_id": "4492a226d2fed55f0003e2040635078aed599cda",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCv4tKI8fRRi2H3\n+BXmXODhs3V9hZVZSmIB/27oaRExEpJdY7ucfK5riL2eSulOdcy1XB5T5Xi0UOa6\nRb5nV4AyIuoKa+Ckz5PrWHNqS9GbCaCuIlmN1BMY/SHTUEMGOVGhQxhO0zrHs+Cs\nMvJrXNmbJOMvirYjAYishLuwcEei+FFtXeS//kcJO7IylkylO6VdA6p/MOmAFVsr\n7Ip/phlvbKTbjZ1DxWfLtDEhaA8VjRAz/qUa4YqR+Wv+M2kBT582hN+VxEGL7e2K\nur6g8DNG0d79gqoolcnNhiEc1PsH5mDsbvZL86OqNcToC7Yy+8V8u8U0HCRtS8U8\nWwxoTzGXAgMBAAECggEAVQzHBo6NOGNAb+JoYJj361vWi+htBBzaUKH+NOcdd4/F\n89/WqECILRqVqnYJ5DVFVEtjpOj5GaRnNZqlDB69MEE+z+RDYB66JdsDEFryU9hv\neNTGXjU3OOWqlh6hEmDkLqkdl3w/17KNCWenXrAqz4EiVGpsUXgb6WRTx+k7UruX\n9RughkPx77g8M4Imyi3EtSdozzvyOkDBeKSym9UqNggArtA1POlP/L9TjDyE/Lgg\n8WeBZkFk5Of6ZIt9RHh7nJHdTT+OeNpslH8gBeKT5yangGyEeNb+Dj///C6vlgG2\nFyrC4N07d5sbDh2Crjv3uAk31j8JuDTKXY647C2UiQKBgQDlnHJu00H7aVSQZk+C\n5RAvIXNHTmLgJXcSdNmHywRrJWYfX+eEqWuHhztBgn06TJv/n0siSST6WbXp7KID\ncnuOuq4W5PAwkB9o6Cqt/ZzYCV6bOoqX3L2Zv76titZ8Scqor1CekjgD0FjgEjWy\nzVlyc7vZnXyN9msf5b399izX7wKBgQDEGbDggSKUPdx6RIZUCJHN+ls82cXk4z92\nDOg16aFFw7/CYaiG9yPe2nLNZbMJq6dJMCc0G5/3L2xYO1dGrPEOXvKgUsrBKADE\nxqiBVf4rkbNeEkm8+N/Rf1Ihf8Gg1K0Z3CI5Tmn/C4bQ6a/9vH40EEZJLYcly/TQ\n/V+prQ5Y2QKBgD0MkLx4vRVslwhhu4hRATGW0kDGTbHNJFCq8t+REhau9e0nobX7\nGdUKFq4/VK54ig24O9Dc49EQozaULSt/d+ymI/2AV4CCAWfyOs7SHK6wJxBcy1a/\nYUYM3lTkEk0vjYu2OVhABla1Qbwp+08UHFE7BlpA7koMl8T+X7qzho7PAoGAGIuK\nqx8ev+VaUmd/VMdZ0KlUgDJV5cdX6yPEcPMUP5I3z1G/8Vy/vaYkFndzSHOW1b9U\nON54UE08R3LuAqek6IKT5eNXA4RJTFf9QWsNDFEJXW32ktOn2CYSlqTSDJpyLDl0\ngy3AcK71qfKGF8FfHo8m7QPo1Z9IvlvofGlv0UkCgYEAj1UT4zlW+2YizSKbE91T\nMX4HXpJZOdGAoUlWMvLvSMF3xItBeJnd/UbdlgRWI78M93YkX+VZfTSetnsJuuID\nStfDZDZOriHilnOdtt8aTX173iAuJ0IM4lQBY/ESufMA7N9CZmwucrsRGffBupXP\nAD0N4oCRcYU7QHE98kP3d1U=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-803pl@mitra-cemerlang.iam.gserviceaccount.com",
+  "client_id": "100438925673626220474",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-803pl%40mitra-cemerlang.iam.gserviceaccount.com"
+}
