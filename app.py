@@ -113,6 +113,7 @@ def daftar():
   return render_template('daftar.html')
 
 @app.route('/daftar_new')
+@login_required
 def daftar_new():
   return render_template('daftar_new.html')
 
