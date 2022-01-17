@@ -177,7 +177,6 @@ def dashboard():
   return render_template('dashboard.html')
 
 @app.route('/menu')
-@login_required
 def menu():
   kota = dataBase.collection('T_Umum_Wilayah').order_by('Kota', direction = firestore.Query.ASCENDING).stream()
   kt = []
@@ -188,7 +187,6 @@ def menu():
   return render_template('menu.html', data = kt)
 
 @app.route('/tambah_menu', methods = ['GET', 'POST'])
-@login_required
 def tambah_menu():
   if request.method == 'POST':
     data = {
