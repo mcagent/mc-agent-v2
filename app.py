@@ -1,9 +1,11 @@
-from flask import Flask, render_template, url_for, redirect, request, session
+from os import truncate
+from flask import Flask, render_template, url_for, redirect, request, session, jsonify
 import firebase_admin
 from firebase_admin import credentials, firestore
 from flask.helpers import flash
 from werkzeug.security import generate_password_hash, check_password_hash
 from functools import wraps
+import pandas as pd
 
 cred = credentials.Certificate("firebase.json")
 firebase_admin.initialize_app(cred)
@@ -112,15 +114,105 @@ def register():
 def daftar():
   return render_template('daftar.html')
 
-@app.route('/daftar_new')
+@app.route('/formulir/<uid>', methods = ['GET', 'POST'])
 @login_required
-def daftar_new():
-  return render_template('daftar_new.html')
+def formulir(uid):
+  kota = dataBase.collection('T_Umum_Wilayah').order_by('Kota', direction = firestore.Query.ASCENDING).stream()
+  kt = []
+  for kot in kota:
+    k = kot.to_dict()
+    k['id'] = kot.id
+    kt.append(k)
+  if request.method == 'POST':
+    data = {
+      # KATEGORI WAJIB PAJAK
+      'kategoriWajibPajak': request.form['kwp'],
+      'statusCabangPusat': request.form['status'],
+      'npwpSuami': request.form['npwpSuami'],
+      'npwpPusat': request.form['npwpPusat'],
+      # IDENTITAS WAJIB PAJAK
+      'gelarDepan': request.form['gelarDp'],
+      'gelarBelakang': request.form['gelarBl'],
+      'tempatLahir': request.form['tempatLahir'],
+      'tanggalLahir': request.form['tanggalLahir'],
+      'statusNikah': request.form['statusNikah'],
+      'kebangsaan': request.form['kebangsaan'],
+      'nikPassport': request.form['nikPassport'],
+      'nomorTelepon': request.form['telpWP'],
+      'nomorHp': request.form['hpWP'],
+      # SUMBER PENGHASILAN UTAMA
+      'pekerjaanDlmHubKerja': request.form['pdhk'],
+      'kegiatanUsaha': request.form['kegUsaha'],
+      'merkDagangUsaha': request.form['merkDagUsh'],
+      'karyawan': request.form['karyawan'],
+      'metode': request.form['metode'],
+      # ALAMAT TEMPAT TINGGAL
+      'jalan': request.form['jalan'],
+      'blok': request.form['blok'],
+      'nomorRumah': request.form['nomor'],
+      'RT': request.form['rt'],
+      'RW': request.form['rw'],
+      'kodeWilayah': request.form['kodeWilayah'],
+      'kelurahanDesa': request.form['lurahDesa'],
+      'kecamatan': request.form['kecamatan'],
+      'kabKota': request.form['kabKota'],
+      'provinsi': request.form['provinsi'],
+      'kodePos': request.form['kodePos'],
+      'teleponRumah': request.form['telp'],
+      'fax': request.form['fax'],
+      'handphone': request.form['handphone'],
+      # INFO TAMBAHAN
+      'tanggungan': request.form['tanggungan'],
+      'kisaranPenghasilan': request.form['kisaran']
+    }
+    dataBase.collection('users').document(uid).set(data, merge = True)
+    flash('Formulir berhasil di input', 'success')
+    return redirect(url_for('dashboard'))
+  session['user'] = dataBase.collection('users').document(session['userId']).get().to_dict()
+  return render_template('formulir.html', data = kt)
 
 @app.route('/dashboard')
 @login_required
 def dashboard():
   return render_template('dashboard.html')
+
+@app.route('/menu')
+@login_required
+def menu():
+  kota = dataBase.collection('T_Umum_Wilayah').order_by('Kota', direction = firestore.Query.ASCENDING).stream()
+  kt = []
+  for kot in kota:
+    k = kot.to_dict()
+    k['id'] = kot.id
+    kt.append(k)
+  return render_template('menu.html', data = kt)
+
+@app.route('/tambah_menu', methods = ['GET', 'POST'])
+@login_required
+def tambah_menu():
+  if request.method == 'POST':
+    data = {
+      'Kota': request.form['tambahKota']
+    }
+    
+    kotaS = dataBase.collection('T_Umum_Wilayah').where('Kota', '==', data['Kota']).stream()
+    kota = {}
+    for kt in kotaS:
+      kota = kt.to_dict()
+    if kota:
+      flash('Maaf, kota sudah terdaftar', 'danger')
+      return redirect(url_for('tambah_menu'))
+    
+    dataBase.collection('T_Umum_Wilayah').document().set(data)
+    flash('Berhasil tambah kota', 'success')
+    return redirect(url_for('menu'))
+  return render_template('tambah_menu.html')
+
+@app.route('/menu/hapus/<uid>')
+def hapus_menu(uid):
+  dataBase.collection('T_Umum_Wilayah').document(uid).delete()
+  flash('Kota berhasil dihapus', 'success')
+  return redirect(url_for('menu'))
 
 @app.route('/myprofile')
 @login_required
@@ -156,6 +248,7 @@ def clients():
     c['id'] = cl.id
     client.append(c)
   return render_template('clients.html', data = client)
+  # return jsonify(client)
 
 @app.route('/clients/ubah/<uid>', methods = ['GET', 'POST'])
 @login_required
@@ -173,6 +266,11 @@ def ubah_clients(uid):
   user['id'] = uid
   return render_template('ubah_clients.html', user = user)
 
+@app.route('/clients/lihat/<uid>')
+def lihat_clients(uid):
+  user = dataBase.collection('users').document(uid).get().to_dict()
+  return render_template('lihat_clients.html', user = user)
+
 @app.route('/clients/hapus/<uid>')
 def hapus_clients(uid):
   dataBase.collection('users').document(uid).delete()
@@ -189,7 +287,16 @@ def logout():
   session.clear()
   return render_template('login.html')
 
+@app.route('/dataExcelForm', methods = ['GET', 'POST'])
+def dataExcelForm():
+  return render_template('dataExcelForm.html')
 
+@app.route('/dataExcel', methods = ['GET', 'POST'])
+def dataExcel():
+  if request.method == 'POST':
+    file = request.form['importExcel']
+    data = pd.read_excel(file)
+  return render_template('dataExcel.html', data = data.to_json())
 
 
 if __name__ == '__main__':

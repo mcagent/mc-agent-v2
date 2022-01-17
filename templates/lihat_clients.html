@@ -1,0 +1,120 @@
+{% set page_title = '| Clients' %}
+{% set title = 'Data Client' %}
+{% extends 'base.html' %}
+{% block _content %}
+<div class="container-fluid">
+  <div class="container text-center" style="width: 70%;">
+    {% with messages = get_flashed_messages(with_categories = true) %}
+    {% if messages %}
+    {% for category, message in messages %}
+    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+      {{ message }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+  </div>
+  <ul class="list-group">
+    <li class="list-group-item list-group-item-action">
+      <span class="fw-bold">Nama</span> : {{ user.nama }}
+    </li>
+    <li class="list-group-item list-group-item-action">
+      <span class="fw-bold">Username</span> : {{ user.username }}
+    </li>
+    <li class="list-group-item list-group-item-action">
+      <span class="fw-bold">Email</span> : {{ user.email }}
+    </li>
+    <li class="list-group-item list-group-item-action">
+      <span class="fw-bold">Alamat</span> : {{ user.alamat }}
+    </li>
+    <li class="list-group-item list-group-item-action">
+      <span class="fw-bold">Perusahaan</span> : {{ user.company }}
+    </li>
+    <li class="list-group-item list-group-item-action">
+      <span class="fw-bold">NPWP</span> : {{ user.npwp }}
+    </li>
+    <li class="list-group-item list-group-item-action">
+      <span class="fw-bold">Kategori Wajib Pajak</span> : {{ user.kategoriWajibPajak }}
+    </li>
+    <li class="list-group-item list-group-item-action">
+      <span class="fw-bold">Status Cabang Pusat</span> : {{ user.statusCabangPusat }}
+    </li>
+    <li class="list-group-item list-group-item-action">
+      <span class="fw-bold">NPWP Suami</span> : {{ user.npwpSuami }}
+    </li>
+    <li class="list-group-item list-group-item-action">
+      <span class="fw-bold">NPWP Pusat</span> : {{ user.npwpPusat }}
+    </li>
+    <li class="list-group-item list-group-item-action">
+      <span class="fw-bold">Gelar Depan</span> : {{ user.gelarDepan }}
+    </li>
+    <li class="list-group-item list-group-item-action">
+      <span class="fw-bold">Gelar Belakang</span> : {{ user.gelarBelakang }}
+    </li>
+    <li class="list-group-item list-group-item-action">
+      <span class="fw-bold">Tempat / Tanggal Lahir</span> : {{ user.tempatLahir }} / {{ user.tanggalLahir }}
+    </li>
+    <li class="list-group-item list-group-item-action">
+      <span class="fw-bold">Status Nikah</span> : {{ user.statusNikah }}
+    </li>
+    <li class="list-group-item list-group-item-action">
+      <span class="fw-bold">Kebangsaan</span> : {{ user.kebangsaan }}
+    </li>
+    <li class="list-group-item list-group-item-action">
+      <span class="fw-bold">NIK / Passport</span> : {{ user.nikPassport }}
+    </li>
+    <li class="list-group-item list-group-item-action">
+      <span class="fw-bold">No. Telepon / HP</span> : {{ user.nomorTelepon }} / {{ user.nomorHp }}
+    </li>
+    <li class="list-group-item list-group-item-action">
+      <span class="fw-bold">Pekerjaan Dalam Hubungan Kerja</span> : {{ user.pekerjaanDlmHubKerja }}
+    </li>
+    <li class="list-group-item list-group-item-action">
+      <span class="fw-bold">Kegiatan Usaha</span> : {{ user.kegiatanUsaha }}
+    </li>
+    <li class="list-group-item list-group-item-action">
+      <span class="fw-bold">Merk Dagang / Usaha</span> : {{ user.merkDagangUsaha }}
+    </li>
+    <li class="list-group-item list-group-item-action">
+      <span class="fw-bold">Karyawan</span> : {{ user.karyawan }}
+    </li>
+    <li class="list-group-item list-group-item-action">
+      <span class="fw-bold">Metode</span> : {{ user.metode }}
+    </li>
+    <li class="list-group-item list-group-item-action">
+      <span class="fw-bold">Alamat</span> : {{ user.jalan }} {{ user.blok }} {{ user.nomorRumah }}
+    </li>
+    <li class="list-group-item list-group-item-action">
+      <span class="fw-bold">RT / RW</span> : {{ user.RT }} / {{ user.RW }}
+    </li>
+    <li class="list-group-item list-group-item-action">
+      <span class="fw-bold">Kode Wilayah</span> : {{ user.kodeWilayah }}
+    </li>
+    <li class="list-group-item list-group-item-action">
+      <span class="fw-bold">Kelurahan / Kecamatan</span> : {{ user.kelurahanDesa }} / {{ user.kecamatan }}
+    </li>
+    <li class="list-group-item list-group-item-action">
+      <span class="fw-bold">Kabupaten / Kota</span> : {{ user.kabKota }}
+    </li>
+    <li class="list-group-item list-group-item-action">
+      <span class="fw-bold">Provinsi</span> : {{ user.provinsi }}
+    </li>
+    <li class="list-group-item list-group-item-action">
+      <span class="fw-bold">Kode Pos</span> : {{ user.kodePos }}
+    </li>
+    <li class="list-group-item list-group-item-action">
+      <span class="fw-bold">Telepon / Fax</span> : {{ user.teleponRumah }} / {{ user.fax }}
+    </li>
+    <li class="list-group-item list-group-item-action">
+      <span class="fw-bold">No. Handphone</span> : {{ user.handphone }}
+    </li>
+    <li class="list-group-item list-group-item-action">
+      <span class="fw-bold">Tanggungan</span> : {{ user.tanggungan }}
+    </li>
+    <li class="list-group-item list-group-item-action">
+      <span class="fw-bold">Kisaran Penghasilan</span> : {{ user.kisaranPenghasilan }}
+    </li>
+  </ul>
+</div>
+{% endblock %}

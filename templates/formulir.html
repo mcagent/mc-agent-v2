@@ -1,0 +1,496 @@
+{% set page_title = '| Formulir' %} 
+{% set title = 'Formulir Registrasi Data WP' %} 
+{% extends 'base.html' %} 
+{% block _content %}
+
+<style>
+  @media (max-width: 576px) {
+    .tes{
+      font-size: 11px;
+    }
+  }
+  @media (max-width: 768px) {
+    .tes{
+      font-size: 15px;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .tes{
+      font-size: 15px;
+    }
+  }
+  
+  @media (max-width: 1200px) {
+    .tes{
+      font-size: 15px;
+    }
+  }
+  
+  @media (max-width: 1400px) {
+    .tes{
+      font-size: 15px;
+    }
+  }
+</style>
+
+<form action="{{ url_for('formulir', uid=session.userId) }}" method="POST">
+  <div class="row mb-5">
+    <div class="col-lg-12">
+      <!-- KATEGORI WAJIB PAJAK -->
+      <div class="tab">
+        <h5>A. Kategori Wajib Pajak</h5>
+        <p class="text-secondary">Kategori Wajib Pajak<span class="text-danger">*</span></p>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-5">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="kwp" id="1" value="Orang Pribadi" required>
+                <label class="form-check-label" for="1">
+                  Orang Pribadi
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="kwp" id="2" value="HB" required>
+                <label class="form-check-label" for="2">
+                  Wanita yang telah hidup berpisah berdasarkan keputusan hakim (HB)
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="kwp" id="3" value="PH" required>
+                <label class="form-check-label" for="3">
+                  Istri dengan perjanjian pemisahan harta dan penghasilan (PH)
+                </label>
+              </div>
+            </div>
+            <div class="col-lg-7">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="kwp" id="4" value="Istri memilih menjalankan" required>
+                <label class="form-check-label" for="4">
+                  Istri memilih menjalankan
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="kwp" id="5" value="WBT" required>
+                <label class="form-check-label" for="5">
+                  Warisan yang belum terbagi sebagai satu kesatuan menggantikan yang berhak (WBT)
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="container">
+          <div class="row">
+            <div class="col-lg-5">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Orang Pribadi" id="op" name="op">
+                <label class="form-check-label" for="op">
+                  Orang Pribadi
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="HB" id="hb" name="hb">
+                <label class="form-check-label" for="hb">
+                  Wanita yang telah hidup berpisah berdasarkan keputusan hakim (HB)
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="PH" id="ph" name="ph">
+                <label class="form-check-label" for="ph">
+                  Istri dengan perjanjian pemisahan harta dan penghasilan (PH)
+                </label>
+              </div>
+            </div>
+            <div class="col-lg-7">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Istri memilih menjalankan" id="imm" name="imm">
+                <label class="form-check-label" for="imm">
+                  Istri memilih menjalankan
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="WBT" id="wbt" name="wbt">
+                <label class="form-check-label" for="wbt">
+                  Warisan yang belum terbagi sebagai satu kesatuan menggantikan yang berhak (WBT)
+                </label>
+              </div>
+            </div>
+          </div>
+        </div> -->
+
+        <p class="text-secondary">Status Pusat - Cabang<span class="text-danger">*</span></p>
+        <div class="container">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" value="PUSAT" id="status1" name="status" required>
+            <label class="form-check-label" for="status1">
+              PUSAT
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" value="Cabang" id="status2" name="status" required>
+            <label class="form-check-label" for="status2">
+              Cabang
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" value="OPPT" id="status3" name="status" required>
+            <label class="form-check-label" for="status3">
+              OPPT
+            </label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="mb-3">
+              <label for="npwpSuami" class="form-label text-secondary">NPWP Suami</label>
+              <input type="text" class="form-control" id="npwpSuami" name="npwpSuami" value="{{ session.user.npwpSuami }}" required>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="mb-3">
+              <label for="npwpPusat" class="form-label text-secondary">NPWP Pusat</label>
+              <input type="text" class="form-control" id="npwpPusat" name="npwpPusat" value="{{ session.user.npwpPusat }}" required>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- IDENTITAS WAJIB PAJAK -->
+      <div class="tab">
+        <h5>B. Identitas Wajib Pajak</h5>
+        <div class="mb-3 row">
+          <label for="namaWP" class="col-lg-2 col-form-label">Nama Wajib Pajak</label>
+          <div class="col-lg-10">
+            <input type="text" class="form-control" id="namaWP" name="namaWP" value="{{ session.user.nama }}" readonly>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="gelarDp" class="col-lg-2 col-form-label">Gelar Depan</label>
+          <div class="col-lg-4">
+            <input type="text" class="form-control" id="gelarDp" name="gelarDp" value="{{ session.user.gelarDepan }}" required>
+          </div>
+          <label for="gelarBl" class="col-lg-2 col-form-label">Gelar Belakang</label>
+          <div class="col-lg-4">
+            <input type="text" class="form-control" id="gelarBl" name="gelarBl" value="{{ session.user.gelarBelakang }}" required>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="ttl" class="col-lg-2 col-form-label">Tempat Tgl. Lhr.</label>
+          <div class="col-lg-4">
+            <input type="text" class="form-control" id="ttl" name="tempatLahir" value="{{ session.user.tempatLahir }}" required>
+          </div>
+          <div class="col-lg-4">
+            <input type="date" class="form-control" id="ttl" name="tanggalLahir" value="{{ session.user.tanggalLahir }}" required>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="statusNikah" class="col-lg-2 col-form-label">Status Nikah</label>
+          <div class="col-lg-10">
+            <select class="form-select" aria-label="Default select example" id="statusNikah" name="statusNikah" required>
+              <option selected value="belum kawin">Belum Kawin</option>
+              <option value="kawin">Kawin</option>
+            </select>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="kebangsaan" class="col-lg-2 col-form-label">Kebangsaan</label>
+          <div class="col-lg-4">
+            <select class="form-select" aria-label="Default select example" id="kebangsaan" name="kebangsaan" required>
+              <option selected value="">-- Pilih --</option>
+              <option value="WNI">Warga Negara Indonesia (WNI)</option>
+              <option value="WNA">Warga Negara Asing (WNA)</option>
+            </select>
+          </div>
+          <label for="nikPassport" class="col-lg-2 col-form-label">NIK/No. Passport</label>
+          <div class="col-lg-4">
+            <input type="text" class="form-control" id="nikPassport" name="nikPassport" value="{{ session.user.nikPassport }}" required>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="telpWP" class="col-lg-2 col-form-label">Nomor Telepon</label>
+          <div class="col-lg-10">
+            <input type="tel" class="form-control" id="telpWP" name="telpWP" value="{{ session.user.nomorTelepon }}" required>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="hpWP" class="col-lg-2 col-form-label">Nomor HP</label>
+          <div class="col-lg-10">
+            <input type="tel" class="form-control" id="hpWP" name="hpWP" value="{{ session.user.nomorHp }}" required>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="emailWP" class="col-lg-2 col-form-label">Email</label>
+          <div class="col-lg-10">
+            <input type="email" class="form-control" id="emailWP" name="emailWP" value="{{ session.user.email }}" readonly>
+          </div>
+        </div>
+      </div>
+      <!-- SUMBER PENGHASILAN UTAMA -->
+      <div class="tab">
+        <h5>C. Sumber Penghasilan Utama</h5>
+        <p class="text-secondary">Pekerjaan dalam hubungan kerja</p>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-5">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" value="PNS" id="pns1" name="pdhk" required>
+                <label class="form-check-label" for="pns1">
+                  PNS
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" value="TNI / Polri" id="tniPolri2" name="pdhk" required>
+                <label class="form-check-label" for="tniPolri2">
+                  TNI / Polri
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" value="Pensiunan" id="pensiun3" name="pdhk" required>
+                <label class="form-check-label" for="pensiun3">
+                  Pensiunan
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" value="Pegawai Swasta" id="pSwasta4" name="pdhk" required>
+                <label class="form-check-label" for="pSwasta4">
+                  Pegawai Swasta
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" value="Pegawai BUMN / BUMD" id="bumnd5" name="pdhk" required>
+                <label class="form-check-label" for="bumnd5">
+                  Pegawai BUMN / BUMD
+                </label>
+              </div>
+            </div>
+            <div class="col-lg-7">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" value="Pegawai Badan Publik" id="pbp6" name="pdhk" required>
+                <label class="form-check-label" for="pbp6">
+                  Pegawai Badan Publik
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" value="Pejabat Negara / Daerah" id="pnd7" name="pdhk" required>
+                <label class="form-check-label" for="pnd7">
+                  Pejabat Negara / Daerah
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" value="Pekerja tidak termasuk subjek pajak" id="tidakPajak8" name="pdhk" required>
+                <label class="form-check-label" for="tidakPajak8">
+                  Pekerja pada pemberi kerja yang tidak termasuk sebagai subjek pajak
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" id="pegawaiLain8" name="pdhk" required>
+                <label class="form-check-label" for="pegawaiLain8">
+                  Pegawai Lainnya
+                </label>
+                <div class="col-auto">
+                  <input type="text" id="pegawaiLain8" name="pdhk" class="form-control">
+                </div>
+              </div>
+              <!-- <div class="row g-3 align-items-center">
+                <div class="col-auto">
+                  <label for="pegawaiLain" class="col-form-label">Pegawai Lainnya</label>
+                </div>
+                <div class="col-auto">
+                  <input type="text" id="pegawaiLain" name="pegawaiLain" class="form-control" aria-describedby="passwordHelpInline">
+                </div>
+              </div> -->
+            </div>
+          </div>
+        </div>
+        <hr>
+        <p class="text-secondary">Kegiatan Usaha</p>
+        <div class="container">
+          <div class="mb-3 row">
+            <label for="kegUsaha" class="col-lg-2 col-form-label">Kegiatan Usaha</label>
+            <div class="col-lg-10">
+              <input type="text" class="form-control" id="kegUsaha" name="kegUsaha" value="{{ session.user.kegiatanUsaha }}" required>
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="merkDagUsh" class="col-lg-2 col-form-label">Merk Dagang/Usaha</label>
+            <div class="col-lg-10">
+              <input type="text" class="form-control" id="merkDagUsh" name="merkDagUsh" value="{{ session.user.merkDagangUsaha }}" required>
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="karyawan" class="col-lg-2 col-form-label">Memiliki Karyawan</label>
+            <div class="col-lg-4">
+              <select class="form-select" aria-label="Default select example" id="karyawan" name="karyawan" required>
+                <option selected value="ya">Ya</option>
+                <option value="tidak">Tidak</option>
+              </select>
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="metode" class="col-lg-2 col-form-label">Metode</label>
+            <div class="col-lg-4">
+              <select class="form-select" aria-label="Default select example" id="metode" name="metode" required>
+                <option selected value="Pembukuan">Pembukuan</option>
+                <option value="Pencatatan">Pencatatan</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <p class="text-secondary">Pekerjaan Bebas</p>
+        <div class="container">
+          <div class="mb-3 row">
+            <label for="kerjaBebas" class="col-lg-2 col-form-label">Pekerjaan Bebas</label>
+            <div class="col-lg-10">
+              <input type="text" class="form-control" id="kerjaBebas" name="kerjaBebas" value="{{ session.user.kerjaBebas }}">
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="PBmerkDagUsh" class="col-lg-2 col-form-label">Merk Dagang/Usaha</label>
+            <div class="col-lg-10">
+              <input type="text" class="form-control" id="PBmerkDagUsh" name="PBmerkDagUsh" value="{{ session.user.PBmerkDagUsh }}">
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="PBkaryawan" class="col-lg-2 col-form-label">Memiliki Karyawan</label>
+            <div class="col-lg-4">
+              <select class="form-select" aria-label="Default select example" id="PBkaryawan" name="PBkaryawan">
+                <option selected value="ya">Ya</option>
+                <option value="tidak">Tidak</option>
+              </select>
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="PBmetode" class="col-lg-2 col-form-label">Metode</label>
+            <div class="col-lg-4">
+              <select class="form-select" aria-label="Default select example" id="PBmetode" name="PBmetode">
+                <option selected value="Pembukuan">Pembukuan</option>
+                <option value="Pencatatan">Pencatatan</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <p class="text-secondary">Lainnya</p>
+        <div class="container">
+          <div class="mb-3 row">
+            <label for="lainnya" class="col-lg-2 col-form-label">Lainnya</label>
+            <div class="col-lg-10">
+              <input type="text" class="form-control" id="lainnya" name="lainnya" value="{{ session.user.lainnya }}">
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- ALAMAT TEMPAT TINGGAL -->
+      <div class="tab">
+        <h5>D. Alamat Tempat Tinggal</h5>
+        <div class="mb-3 row">
+          <label for="jalan" class="col-lg-2 col-form-label">Jalan</label>
+          <div class="col-lg-10">
+            <input type="text" class="form-control" id="jalan" name="jalan" value="{{ session.user.jalan }}" required>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="blok" class="col-lg-2 col-form-label">Blok</label>
+          <div class="col-lg-4">
+            <input type="text" class="form-control" id="blok" name="blok" value="{{ session.user.blok }}" required>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="nomor" class="col-lg-2 col-form-label">Nomor</label>
+          <div class="col-lg-4">
+            <input type="text" class="form-control" id="nomor" name="nomor" value="{{ session.user.nomorRumah }}" required>
+          </div>
+          <label for="rtrw" class="col-lg-2 col-form-label">RT / RW</label>
+          <div class="col-lg-1">
+            <input type="text" class="form-control" id="rt" name="rt" placeholder="RT" value="{{ session.user.RT }}" required>
+          </div>
+          <div class="col-lg-1">
+            <input type="text" class="form-control" id="rw" name="rw" placeholder="RW" value="{{ session.user.RW }}" required>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="kodeWilayah" class="col-lg-2 col-form-label">Kode Wilayah</label>
+          <div class="col-lg-10">
+            <input type="text" class="form-control" id="kodeWilayah" name="kodeWilayah" placeholder="Cari" value="{{ session.user.kodeWilayah }}" required>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="lurahDesa" class="col-lg-2 col-form-label">Kelurahan / Desa</label>
+          <div class="col-lg-10">
+            <input type="text" class="form-control" id="lurahDesa" name="lurahDesa" value="{{ session.user.kelurahanDesa }}" required>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="kecamatan" class="col-lg-2 col-form-label">Kecamatan</label>
+          <div class="col-lg-10">
+            <input type="text" class="form-control" id="kecamatan" name="kecamatan" value="{{ session.user.kecamatan }}" required>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="kabKota" class="col-lg-2 col-form-label">Kab. / Kota</label>
+          <div class="col-lg-10">
+            <select class="form-select" aria-label="Default select example" id="kabKota" name="kabKota" required>
+              <option selected value="">-- Pilih --</option>
+              {% for k in data %}
+              <option>{{ k['Kota'] }}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="provinsi" class="col-lg-2 col-form-label">Provinsi</label>
+          <div class="col-lg-10">
+            <input type="text" class="form-control" id="provinsi" name="provinsi" value="{{ session.user.provinsi }}" required>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="kodePos" class="col-lg-2 col-form-label">Kode POS</label>
+          <div class="col-lg-10">
+            <input type="text" class="form-control" id="kodePos" name="kodePos" value="{{ session.user.kodePos }}" required>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="telpFax" class="col-lg-2 col-form-label">TELP. / FAX</label>
+          <div class="col-lg-5">
+            <input type="text" class="form-control" id="telp" name="telp" placeholder="Telepon" value="{{ session.user.teleponRumah }}" required>
+          </div>
+          <div class="col-lg-5">
+            <input type="text" class="form-control" id="fax" name="fax" placeholder="FAX" value="{{ session.user.fax }}" required>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="handphone" class="col-lg-2 col-form-label">No. Handphone</label>
+          <div class="col-lg-10">
+            <input type="text" class="form-control" id="handphone" name="handphone" value="{{ session.user.handphone }}" required>
+          </div>
+        </div>
+      </div>
+      <!-- INFO TAMBAHAN -->
+      <div class="tab">
+        <h5>G. Info Tambahan</h5>
+        <div class="mb-3 row">
+          <label for="tanggungan" class="col-lg-2 col-form-label">Jumlah Tanggungan</label>
+          <div class="col-lg-10">
+            <input type="text" class="form-control" id="tanggungan" name="tanggungan" value="{{ session.user.tanggungan }}">
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="kisaran" class="col-lg-2 col-form-label">Kisaran Penghasilan</label>
+          <div class="col-lg-10">
+            <select class="form-select" aria-label="Default select example" id="kisaran" name="kisaran">
+              <option selected value="">Per Bulan</option>
+              <option value="≤ Rp 2.000.000">≤ Rp 2.000.000</option>
+              <option value="Rp 2.000.000 - Rp 4.999.999">Rp 2.000.000 - Rp 4.999.999</option>
+              <option value="Rp 5.000.000 - Rp 9.999.999">Rp 5.000.000 - Rp 9.999.999</option>
+              <option value="Rp 10.000.000 - Rp 19.999.999">Rp 10.000.000 - Rp 19.999.999</option>
+              <option value="≥ Rp 20.000.000">≥ Rp 20.000.000</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn text-light btn-info mt-3">Submit</button>
+    </div>
+  </div>
+</form>
+{% endblock %}
