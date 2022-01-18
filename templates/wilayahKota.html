@@ -1,0 +1,41 @@
+{% set page_title = '| Menu' %} 
+{% set title = 'T Umum Wilayah Kota' %} 
+{% extends 'base.html' %} 
+{% block _content %}
+<div class="container text-center" style="width: 70%;">
+  {% with messages = get_flashed_messages(with_categories = true) %}
+  {% if messages %}
+  {% for category, message in messages %}
+  <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+    {{ message }}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  {% endfor %}
+  {% endif %}
+  {% endwith %}
+</div>
+<div class="container">
+  <a href="/tambah_kota"><button type="button" id="tambah" class="btn btn-primary">Tambah</button></a>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Kota</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for k in data %}
+      <tr>
+        <th scope="row">{{ loop.index }}</th>
+        <td>{{ k['Kota'] }}</td>
+        <td>
+          <a href="/kota/ubah/{{ k.id }}" class="btn btn-outline-dark"><i class="bi bi-pencil-fill"></i> Ubah</a>
+          <a href="/kota/hapus/{{ k.id }}" class="btn btn-outline-danger"><i class="bi bi-trash-fill"></i> Hapus</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

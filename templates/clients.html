@@ -40,15 +40,17 @@
             <td>{{ c['alamat'] }}</td>
             <td>{{ c['levelAkses'] }}</td>
             <td>
-              <div class="row">
-                <div class="col-4">
-                  <a href="/clients/ubah/{{ c.id }}" class="text-dark"><i class="bi bi-pencil-fill"></i></a>
-                </div>
-                <div class="col-4">
-                  <a href="/clients/lihat/{{ c.id }}" class="text-info"><i class="bi bi-eye-fill"></i></a>
-                </div>
-                <div class="col-4">
-                  <a href="/clients/hapus/{{ c.id }}" class="text-danger"><i class="bi bi-trash-fill"></i></a>
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-4">
+                    <a href="/clients/ubah/{{ c.id }}" class="text-dark"><i class="bi bi-pencil-fill"></i></a>
+                  </div>
+                  <div class="col-4">
+                    <a href="/clients/lihat/{{ c.id }}" class="text-info"><i class="bi bi-eye-fill"></i></a>
+                  </div>
+                  <div class="col-4">
+                    <a href="/clients/hapus/{{ c.id }}" class="text-danger"><i class="bi bi-trash-fill"></i></a>
+                  </div>
                 </div>
               </div>
             </td>

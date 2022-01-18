@@ -1,0 +1,26 @@
+{% set page_title = '| Menu' %} 
+{% set title = 'Ubah Kota' %} 
+{% extends 'base.html' %} 
+{% block _content %}
+<div class="container">
+  <div class="container text-center" style="width: 70%;">
+    {% with messages = get_flashed_messages(with_categories = true) %}
+    {% if messages %}
+    {% for category, message in messages %}
+    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+      {{ message }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+  </div>
+  <form action="{{ url_for('ubah_kota', uid=user.id) }}" method="POST">
+    <div class="mb-3">
+      <label for="tambahKota" class="form-label">Kota</label>
+      <input type="text" class="form-control" id="tambahKota" name="tambahKota" aria-describedby="emailHelp" value="{{ user.Kota }}" required>
+    </div>
+    <button type="submit" id="tes" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+{% endblock %}

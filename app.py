@@ -1,4 +1,5 @@
 from os import truncate
+from pickle import TRUE
 from flask import Flask, render_template, url_for, redirect, request, session, jsonify
 import firebase_admin
 from firebase_admin import credentials, firestore
@@ -83,7 +84,7 @@ def register():
       'username': request.form['username'],
       'email': request.form['email'],
       'password': request.form['password'],
-      'levelAkses': 'Basic Level Akses'
+      'levelAkses': 'Basic'
     }
     
     users = dataBase.collection('users').where('email','==', data['email']).stream()
@@ -176,20 +177,20 @@ def formulir(uid):
 def dashboard():
   return render_template('dashboard.html')
 
-@app.route('/menu')
+@app.route('/wilayah_kota')
 @login_required
-def menu():
+def wilayahKota():
   kota = dataBase.collection('T_Umum_Wilayah').order_by('Kota', direction = firestore.Query.ASCENDING).stream()
   kt = []
   for kot in kota:
     k = kot.to_dict()
     k['id'] = kot.id
     kt.append(k)
-  return render_template('menu.html', data = kt)
+  return render_template('wilayahKota.html', data = kt)
 
-@app.route('/tambah_menu', methods = ['GET', 'POST'])
+@app.route('/tambah_kota', methods = ['GET', 'POST'])
 @login_required
-def tambah_menu():
+def tambah_kota():
   if request.method == 'POST':
     data = {
       'Kota': request.form['tambahKota']
@@ -201,18 +202,42 @@ def tambah_menu():
       kota = kt.to_dict()
     if kota:
       flash('Maaf, kota sudah terdaftar', 'danger')
-      return redirect(url_for('tambah_menu'))
+      return redirect(url_for('tambah_kota'))
     
     dataBase.collection('T_Umum_Wilayah').document().set(data)
     flash('Berhasil tambah kota', 'success')
-    return redirect(url_for('menu'))
-  return render_template('tambah_menu.html')
+    return redirect(url_for('wilayahKota'))
+  return render_template('tambah_kota.html')
 
-@app.route('/menu/hapus/<uid>')
-def hapus_menu(uid):
+@app.route('/kota/ubah/<uid>', methods = ['GET', 'POST'])
+@login_required
+def ubah_kota(uid):
+  if request.method == 'POST':
+    data = {
+      'Kota': request.form['tambahKota']
+    }
+    
+    kotaS = dataBase.collection('T_Umum_Wilayah').where('Kota', '==', data['Kota']).stream()
+    kota = {}
+    for kt in kotaS:
+      kota = kt.to_dict()
+    if kota:
+      flash('Maaf, kota sudah terdaftar', 'danger')
+      return redirect(url_for('wilayahKota'))
+    
+    dataBase.collection('T_Umum_Wilayah').document(uid).set(data, merge = True)
+    flash('Kota berhasil diubah', 'success')
+    return redirect(url_for('wilayahKota'))
+  user = dataBase.collection('T_Umum_Wilayah').document(uid).get().to_dict()
+  user['id'] = uid
+  return render_template('ubah_kota.html', user = user)
+
+@app.route('/kota/hapus/<uid>')
+@login_required
+def hapus_kota(uid):
   dataBase.collection('T_Umum_Wilayah').document(uid).delete()
   flash('Kota berhasil dihapus', 'success')
-  return redirect(url_for('menu'))
+  return redirect(url_for('wilayahKota'))
 
 @app.route('/myprofile')
 @login_required
