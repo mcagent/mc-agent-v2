@@ -94,6 +94,7 @@
                       <span>My Profile</span>
                     </a>
                   </li>
+                  {% if session ['user']['levelAkses'] == 'admin' %}
                   <li>
                     <a href="/clients" class="nav-link px-3">
                       <span class="me-2"><i class="bi bi-person-lines-fill"></i></span>
@@ -106,6 +107,7 @@
                       <span>Agent</span>
                     </a>
                   </li>
+                  {% endif %}
                 </ul>
               </div>
             </li>
