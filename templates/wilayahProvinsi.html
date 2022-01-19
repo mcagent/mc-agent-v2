@@ -1,5 +1,5 @@
-{% set page_title = '| Kota' %} 
-{% set title = 'T Umum Wilayah Kota' %} 
+{% set page_title = '| Provinsi' %} 
+{% set title = 'T Umum Wilayah Provinsi' %} 
 {% extends 'base.html' %} 
 {% block _content %}
 <div class="container text-center" style="width: 70%;">
@@ -15,23 +15,23 @@
   {% endwith %}
 </div>
 <div class="container">
-  <a href="/tambah_kota"><button type="button" id="tambah" class="btn btn-primary">Tambah</button></a>
+  <a href="/tambah_provinsi"><button type="button" id="tambah" class="btn btn-primary">Tambah</button></a>
   <table class="table table-striped">
     <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Kota</th>
+        <th scope="col">Provinsi</th>
         <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
-      {% for k in data %}
+      {% for p in data %}
       <tr>
         <th scope="row">{{ loop.index }}</th>
-        <td>{{ k['Kota'] }}</td>
+        <td class="provinsi">{{ p['Provinsi'] }}</td>
         <td>
-          <a href="/kota/ubah/{{ k.id }}" class="btn btn-outline-dark"><i class="bi bi-pencil-fill"></i> Ubah</a>
-          <a href="/kota/hapus/{{ k.id }}" class="btn btn-outline-danger"><i class="bi bi-trash-fill"></i> Hapus</a>
+          <a href="/provinsi/ubah/{{ p.id }}" class="btn btn-outline-dark"><i class="bi bi-pencil-fill"></i> Ubah</a>
+          <a href="/provinsi/hapus/{{ p.id }}" class="btn btn-outline-danger"><i class="bi bi-trash-fill"></i> Hapus</a>
         </td>
       </tr>
       {% endfor %}

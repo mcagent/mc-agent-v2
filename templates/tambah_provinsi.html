@@ -1,5 +1,5 @@
-{% set page_title = '| Menu' %} 
-{% set title = 'Ubah Kota' %} 
+{% set page_title = '| Provinsi' %} 
+{% set title = 'Tambah Provinsi' %} 
 {% extends 'base.html' %} 
 {% block _content %}
 <div class="container">
@@ -15,10 +15,10 @@
     {% endif %}
     {% endwith %}
   </div>
-  <form action="{{ url_for('ubah_kota', uid=user.id) }}" method="POST">
+  <form action="{{ url_for('tambah_provinsi') }}" method="POST">
     <div class="mb-3">
-      <label for="tambahKota" class="form-label">Kota</label>
-      <input type="text" class="form-control" id="tambahKota" name="tambahKota" value="{{ user.Kota }}" required>
+      <label for="tambahProvinsi" class="form-label">Provinsi</label>
+      <input type="text" class="form-control" id="tambahProvinsi" name="tambahProvinsi" required>
     </div>
     <button type="submit" id="tes" class="btn btn-primary">Submit</button>
   </form>

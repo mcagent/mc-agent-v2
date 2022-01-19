@@ -1,4 +1,4 @@
-{% set page_title = '| Menu' %} 
+{% set page_title = '| Kota' %} 
 {% set title = 'Tambah Kota' %} 
 {% extends 'base.html' %} 
 {% block _content %}
@@ -18,7 +18,7 @@
   <form action="{{ url_for('tambah_kota') }}" method="POST">
     <div class="mb-3">
       <label for="tambahKota" class="form-label">Kota</label>
-      <input type="text" class="form-control" id="tambahKota" name="tambahKota" aria-describedby="emailHelp" required>
+      <input type="text" class="form-control" id="tambahKota" name="tambahKota" required>
     </div>
     <button type="submit" id="tes" class="btn btn-primary">Submit</button>
   </form>

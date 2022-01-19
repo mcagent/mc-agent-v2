@@ -432,8 +432,19 @@
           <div class="col-lg-10">
             <select class="form-select" aria-label="Default select example" id="kabKota" name="kabKota" required>
               <option selected value="">-- Pilih --</option>
-              {% for k in data %}
+              {% for k in kota %}
               <option>{{ k['Kota'] }}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="provinsi" class="col-lg-2 col-form-label">Provinsi</label>
+          <div class="col-lg-10">
+            <select class="form-select" aria-label="Default select example" id="provinsi" name="provinsi" required>
+              <option selected value="">-- Pilih --</option>
+              {% for p in provinsi %}
+              <option>{{ p['Provinsi'] }}</option>
               {% endfor %}
             </select>
           </div>
