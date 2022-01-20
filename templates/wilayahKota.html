@@ -16,7 +16,8 @@
 </div>
 <div class="container">
   <a href="/tambah_kota"><button type="button" id="tambah" class="btn btn-primary">Tambah</button></a>
-  <table class="table table-striped">
+  <button type="button" id="exportToExcel" class="btn btn-link">Export to Excel</button>
+  <table class="table table-striped" id="tableKota">
     <thead>
       <tr>
         <th scope="col">#</th>
@@ -38,4 +39,12 @@
     </tbody>
   </table>
 </div>
+<script src="/static/js/table2excel.js"></script>
+<script>
+  document.getElementById('exportToExcel').addEventListener('click', function(){
+    const table2excel = new Table2Excel();
+    table2excel.export(document.querySelectorAll('#tableKota'));
+  })
+</script>
+
 {% endblock %}

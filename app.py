@@ -1,13 +1,10 @@
-from heapq import merge
-from os import truncate
-from pickle import TRUE
 from flask import Flask, render_template, url_for, redirect, request, session, jsonify
 import firebase_admin
 from firebase_admin import credentials, firestore
 from flask.helpers import flash
 from werkzeug.security import generate_password_hash, check_password_hash
 from functools import wraps
-# import pandas as pd
+import pandas as pd
 
 cred = credentials.Certificate("firebase.json")
 firebase_admin.initialize_app(cred)
@@ -383,16 +380,16 @@ def logout():
   session.clear()
   return render_template('login.html')
 
-# @app.route('/dataExcelForm', methods = ['GET', 'POST'])
-# def dataExcelForm():
-#   return render_template('dataExcelForm.html')
+@app.route('/dataExcelForm', methods = ['GET', 'POST'])
+def dataExcelForm():
+  return render_template('dataExcelForm.html')
 
-# @app.route('/dataExcel', methods = ['GET', 'POST'])
-# def dataExcel():
-#   if request.method == 'POST':
-#     file = request.form['importExcel']
-#     data = pd.read_excel(file)
-#   return render_template('dataExcel.html', data = data.to_json())
+@app.route('/dataExcel', methods = ['GET', 'POST'])
+def dataExcel():
+  if request.method == 'POST':
+    file = request.form['importExcel']
+    data = pd.read_excel(file)
+  return render_template('dataExcel.html', data = data.to_html())
 
 
 if __name__ == '__main__':
