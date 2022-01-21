@@ -1,13 +1,17 @@
 from flask import Flask, render_template, url_for, redirect, request, session, jsonify
 import firebase_admin
-from firebase_admin import credentials, firestore
+from firebase_admin import credentials, firestore, db
 from flask.helpers import flash
 from werkzeug.security import generate_password_hash, check_password_hash
 from functools import wraps
 import pandas as pd
 
 cred = credentials.Certificate("firebase.json")
-firebase_admin.initialize_app(cred)
+firebase_admin.initialize_app(cred, {
+  'databaseURL': "https://mitra-cemerlang-default-rtdb.asia-southeast1.firebasedatabase.app"
+})
+
+wilayah = db.reference('/wilayah')
 
 dataBase = firestore.client()
 
@@ -193,6 +197,19 @@ def wilayahKota():
     k['id'] = kot.id
     kt.append(k)
   return render_template('wilayahKota.html', data = kt)
+
+@app.route('/fire_base', methods = ['GET', 'POST'])
+@login_required
+def fire_base():
+  if request.method == "POST":
+    data = {
+      'Provinsi': request.form['tambahKota']
+    }
+
+    wilayah.child('Provinsi').push(data)
+    flash('kota terdaftar', 'success')
+    return redirect(url_for('fire_base'))
+  return render_template('fire_base.html')
 
 @app.route('/tambah_kota', methods = ['GET', 'POST'])
 @login_required

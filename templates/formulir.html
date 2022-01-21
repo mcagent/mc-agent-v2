@@ -416,9 +416,25 @@
           </div>
         </div>
         <div class="mb-3 row">
-          <label for="lurahDesa" class="col-lg-2 col-form-label">Kelurahan / Desa</label>
+          <label for="provinsi" class="col-lg-2 col-form-label">Provinsi</label>
           <div class="col-lg-10">
-            <input type="text" class="form-control" id="lurahDesa" name="lurahDesa" value="{{ session.user.kelurahanDesa }}" required>
+            <select class="form-select" aria-label="Default select example" id="provinsi" name="provinsi" required>
+              <option selected value="">-- Pilih Provinsi --</option>
+              {% for p in provinsi %}
+              <option>{{ p['Provinsi'] }}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="kabKota" class="col-lg-2 col-form-label">Kab. / Kota</label>
+          <div class="col-lg-10">
+            <select class="form-select" aria-label="Default select example" id="kabKota" name="kabKota" required>
+              <option selected value="">-- Pilih Kota --</option>
+              {% for k in kota %}
+              <option>{{ k['Kota'] }}</option>
+              {% endfor %}
+            </select>
           </div>
         </div>
         <div class="mb-3 row">
@@ -428,25 +444,9 @@
           </div>
         </div>
         <div class="mb-3 row">
-          <label for="kabKota" class="col-lg-2 col-form-label">Kab. / Kota</label>
+          <label for="lurahDesa" class="col-lg-2 col-form-label">Kelurahan / Desa</label>
           <div class="col-lg-10">
-            <select class="form-select" aria-label="Default select example" id="kabKota" name="kabKota" required>
-              <option selected value="">-- Pilih --</option>
-              {% for k in kota %}
-              <option>{{ k['Kota'] }}</option>
-              {% endfor %}
-            </select>
-          </div>
-        </div>
-        <div class="mb-3 row">
-          <label for="provinsi" class="col-lg-2 col-form-label">Provinsi</label>
-          <div class="col-lg-10">
-            <select class="form-select" aria-label="Default select example" id="provinsi" name="provinsi" required>
-              <option selected value="">-- Pilih --</option>
-              {% for p in provinsi %}
-              <option>{{ p['Provinsi'] }}</option>
-              {% endfor %}
-            </select>
+            <input type="text" class="form-control" id="lurahDesa" name="lurahDesa" value="{{ session.user.kelurahanDesa }}" required>
           </div>
         </div>
         <div class="mb-3 row">
