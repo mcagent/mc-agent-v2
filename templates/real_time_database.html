@@ -1,6 +1,6 @@
-{% set page_title = '| Kota' %} 
-{% set title = 'Tambah Kota' %} 
-{% extends 'base.html' %} 
+{% set page_title = '| Realtime' %}
+{% set title = 'Firebase Realtime' %}
+{% extends 'base.html' %}
 {% block _content %}
 <div class="container">
   <div class="container text-center" style="width: 70%;">
@@ -15,18 +15,10 @@
     {% endif %}
     {% endwith %}
   </div>
-  <form action="{{ url_for('tambah_kota') }}" method="POST">
+  <form action="{{ url_for('real_time_database') }}" method="POST">
     <div class="mb-3">
       <label for="tambahKota" class="form-label">Kota</label>
       <input type="text" class="form-control" id="tambahKota" name="tambahKota" required>
-    </div>
-    <div class="mb-3">
-      <label for="kodeKota" class="form-label">Kode</label>
-      <input type="text" class="form-control" id="kodeKota" name="kodeKota" required>
-    </div>
-    <div class="mb-3">
-      <label for="kodeProvinsi" class="form-label">Kode Provinsi</label>
-      <input type="text" class="form-control" id="kodeProvinsi" name="kodeProvinsi" required>
     </div>
     <button type="submit" id="tes" class="btn btn-primary">Submit</button>
   </form>

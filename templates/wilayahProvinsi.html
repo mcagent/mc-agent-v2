@@ -21,6 +21,7 @@
     <thead>
       <tr>
         <th scope="col">#</th>
+        <th scope="col">Kode</th>
         <th scope="col">Provinsi</th>
         <th scope="col"></th>
       </tr>
@@ -29,6 +30,7 @@
       {% for p in data %}
       <tr>
         <th scope="row">{{ loop.index }}</th>
+        <td class="kode">{{ p['Kode'] }}</td>
         <td class="provinsi">{{ p['Provinsi'] }}</td>
         <td>
           <a href="/provinsi/ubah/{{ p.id }}" class="btn btn-outline-dark"><i class="bi bi-pencil-fill"></i> Ubah</a>

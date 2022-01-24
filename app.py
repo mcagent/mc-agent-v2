@@ -198,9 +198,9 @@ def wilayahKota():
     kt.append(k)
   return render_template('wilayahKota.html', data = kt)
 
-@app.route('/fire_base', methods = ['GET', 'POST'])
+@app.route('/real_time_database', methods = ['GET', 'POST'])
 @login_required
-def fire_base():
+def real_time_database():
   if request.method == "POST":
     data = {
       'Provinsi': request.form['tambahKota']
@@ -208,14 +208,16 @@ def fire_base():
 
     wilayah.child('Provinsi').push(data)
     flash('kota terdaftar', 'success')
-    return redirect(url_for('fire_base'))
-  return render_template('fire_base.html')
+    return redirect(url_for('real_time_database'))
+  return render_template('real_time_database.html')
 
 @app.route('/tambah_kota', methods = ['GET', 'POST'])
 @login_required
 def tambah_kota():
   if request.method == 'POST':
     data = {
+      'Kode': request.form['kodeKota'],
+      'KodeProvinsi': request.form['kodeProvinsi'],
       'Kota': request.form['tambahKota']
     }
     
@@ -237,6 +239,8 @@ def tambah_kota():
 def ubah_kota(uid):
   if request.method == 'POST':
     data = {
+      'Kode': request.form['kodeKota'],
+      'KodeProvinsi': request.form['kodeProvinsi'],
       'Kota': request.form['tambahKota']
     }
     
@@ -265,7 +269,7 @@ def hapus_kota(uid):
 @app.route('/wilayah_provinsi')
 @login_required
 def wilayahProvinsi():
-  provinsi = dataBase.collection('T_Umum_Wilayah_Provinsi').order_by('Provinsi', direction = firestore.Query.ASCENDING).stream()
+  provinsi = dataBase.collection('T_Umum_Wilayah_Provinsi').order_by('Kode', direction = firestore.Query.ASCENDING).stream()
   prov = []
   for pr in provinsi:
     p = pr.to_dict()
@@ -278,7 +282,8 @@ def wilayahProvinsi():
 def tambah_provinsi():
   if request.method == 'POST':
     data = {
-      'Provinsi': request.form['tambahProvinsi']
+      'Provinsi': request.form['tambahProvinsi'],
+      'Kode': request.form['kodeProvinsi']
     }
     
     provinsi = dataBase.collection('T_Umum_Wilayah_Provinsi').where('Provinsi', '==', data['Provinsi']).stream()
@@ -299,7 +304,8 @@ def tambah_provinsi():
 def ubah_provinsi(uid):
   if request.method == 'POST':
     data = {
-      'Provinsi': request.form['tambahProvinsi']
+      'Provinsi': request.form['tambahProvinsi'],
+      'Kode': request.form['kodeProvinsi']
     }
     
     provinsi = dataBase.collection('T_Umum_Wilayah_Provinsi').where('Provinsi', '==', data['Provinsi']).stream()
