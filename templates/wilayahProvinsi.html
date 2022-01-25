@@ -2,7 +2,7 @@
 {% set title = 'T Umum Wilayah Provinsi' %} 
 {% extends 'base.html' %} 
 {% block _content %}
-<div class="container text-center" style="width: 70%;">
+<!-- <div class="container text-center" style="width: 70%;">
   {% with messages = get_flashed_messages(with_categories = true) %}
   {% if messages %}
   {% for category, message in messages %}
@@ -40,6 +40,64 @@
       {% endfor %}
     </tbody>
   </table>
+</div> -->
+
+
+<div class="card">
+  <div class="card-header">
+    <span><i class="bi bi-table me-2"></i></span> Data Provinsi
+  </div>
+  <div class="card-body">
+    <div class="container text-center" style="width: 70%;">
+      {% with messages = get_flashed_messages(with_categories = true) %}
+      {% if messages %}
+      {% for category, message in messages %}
+      <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      {% endfor %}
+      {% endif %}
+      {% endwith %}
+    </div>
+    <div class="container p-2">
+      <a href="/tambah_provinsi"><button type="button" id="tambah" class="btn btn-primary">Tambah</button></a>
+      <button type="button" id="exportToExcel" class="btn btn-link">Export to Excel</button>
+    </div>
+    <div class="table-responsive">
+      <table id="tableProvinsi" class="table table-striped data-table" style="width: 100%">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Kode</th>
+            <th>Provinsi</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for p in data %}
+          <tr>
+            <th scope="row">{{ loop.index }}</th>
+            <td class="kode">{{ p['Kode'] }}</td>
+            <td class="provinsi">{{ p['Provinsi'] }}</td>
+            <td>
+              <a href="/provinsi/ubah/{{ p.id }}" class="btn btn-outline-dark"><i class="bi bi-pencil-fill"></i> Ubah</a>
+              <a href="/provinsi/hapus/{{ p.id }}" class="btn btn-outline-danger"><i class="bi bi-trash-fill"></i> Hapus</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+        <tfoot>
+          <tr>
+            <th>#</th>
+            <th>Kode</th>
+            <th>Provinsi</th>
+            <th></th>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
 </div>
 
 <script src="/static/js/table2excel.js"></script>

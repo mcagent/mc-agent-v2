@@ -231,7 +231,7 @@ def tambah_kota():
     
     dataBase.collection('T_Umum_Wilayah_Kota').document().set(data)
     flash('Berhasil tambah kota', 'success')
-    return redirect(url_for('wilayahKota'))
+    return redirect(url_for('tambah_kota'))
   return render_template('tambah_kota.html')
 
 @app.route('/kota/ubah/<uid>', methods = ['GET', 'POST'])

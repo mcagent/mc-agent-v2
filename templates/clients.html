@@ -31,8 +31,8 @@
             <th></th>
           </tr>
         </thead>
-        {% for c in data %}
         <tbody>
+          {% for c in data %}
           <tr>
             <td>{{ c['nama'] }}</td>
             <td>{{ c['npwp'] }}</td>
@@ -55,8 +55,8 @@
               </div>
             </td>
           </tr>
+          {% endfor %}
         </tbody>
-        {% endfor %}
         <tfoot>
           <tr>
             <th>Name</th>
