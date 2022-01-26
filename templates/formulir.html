@@ -418,22 +418,50 @@
         <div class="mb-3 row">
           <label for="provinsi" class="col-lg-2 col-form-label">Provinsi</label>
           <div class="col-lg-10">
-            <select class="form-select" aria-label="Default select example" id="provinsi" name="provinsi" required>
+            <select class="form-select" id="provinsi" name="provinsi" required>
               <option selected value="">-- Pilih Provinsi --</option>
-              {% for p in provinsi %}
-              <option>{{ p['Provinsi'] }}</option>
-              {% endfor %}
+              <option value="Aceh">Aceh</option>
+              <option value="Sumatera Utara">Sumatera Utara</option>
+              <option value="Sumatera Barat">Sumatera Barat</option>
+              <option value="Riau">Riau</option>
+              <option value="Jambi">Jambi</option>
+              <option value="Sumatera Selatan">Sumatera Selatan</option>
+              <option value="Bengkulu">Bengkulu</option>
+              <option value="Lampung">Lampung</option>
+              <option value="Kepulauan Bangka Belitung">Kepulauan Bangka Belitung</option>
+              <option value="Kepulauan Riau">Kepulauan Riau</option>
+              <option value="DKI Jakarta">DKI Jakarta</option>
+              <option value="Jawa Barat">Jawa Barat</option>
+              <option value="Jawa Tengah">Jawa Tengah</option>
+              <option value="D.I. Yogyakarta">D.I. Yogyakarta</option>
+              <option value="Jawa Timur">Jawa Timur</option>
+              <option value="Banten">Banten</option>
+              <option value="Bali">Bali</option>
+              <option value="Nusa Tenggara Barat">Nusa Tenggara Barat</option>
+              <option value="Nusa Tenggara Timur">Nusa Tenggara Timur</option>
+              <option value="Kalimantan Barat">Kalimantan Barat</option>
+              <option value="Kalimantan Tengah">Kalimantan Tengah</option>
+              <option value="Kalimantan Selatan">Kalimantan Selatan</option>
+              <option value="Kalimantan Timur">Kalimantan Timur</option>
+              <option value="Kalimantan Utara">Kalimantan Utara</option>
+              <option value="Sulawesi Utara">Sulawesi Utara</option>
+              <option value="Sulawesi Tengah">Sulawesi Tengah</option>
+              <option value="Sulawesi Selatan">Sulawesi Selatan</option>
+              <option value="Sulawesi Tenggara">Sulawesi Tenggara</option>
+              <option value="Gorontalo">Gorontalo</option>
+              <option value="Sulawesi Barat">Sulawesi Barat</option>
+              <option value="Maluku">Maluku</option>
+              <option value="Maluku Utara">Maluku Utara</option>
+              <option value="Papua Barat">Papua Barat</option>
+              <option value="Papua">Papua</option>
             </select>
           </div>
         </div>
         <div class="mb-3 row">
           <label for="kabKota" class="col-lg-2 col-form-label">Kab. / Kota</label>
           <div class="col-lg-10">
-            <select class="form-select" aria-label="Default select example" id="kabKota" name="kabKota" required>
-              <option selected value="">-- Pilih Kota --</option>
-              {% for k in kota %}
-              <option>{{ k['Kota'] }}</option>
-              {% endfor %}
+            <select class="form-select" id="kabKota" name="kabKota" required>
+              <option selected disabled value="">-- Pilih Kota --</option>
             </select>
           </div>
         </div>
@@ -447,12 +475,6 @@
           <label for="lurahDesa" class="col-lg-2 col-form-label">Kelurahan / Desa</label>
           <div class="col-lg-10">
             <input type="text" class="form-control" id="lurahDesa" name="lurahDesa" value="{{ session.user.kelurahanDesa }}" required>
-          </div>
-        </div>
-        <div class="mb-3 row">
-          <label for="provinsi" class="col-lg-2 col-form-label">Provinsi</label>
-          <div class="col-lg-10">
-            <input type="text" class="form-control" id="provinsi" name="provinsi" value="{{ session.user.provinsi }}" required>
           </div>
         </div>
         <div class="mb-3 row">
@@ -504,4 +526,17 @@
     </div>
   </div>
 </form>
+
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script src="/static/js/ina.js"></script>
+<script>
+  $('#provinsi').on('change', function() {
+      var selectValue = $(this).val();
+      $('#kabKota').empty();
+      $('#kabKota').append("<option value=''>-- Pilih Kota --</option>");
+      for (i = 0; i < ina[selectValue].length; i++) {
+          $('#kabKota').append("<option value='" + ina[selectValue][i] + "'>" + ina[selectValue][i] + "</option>");
+      }
+  });
+</script>
 {% endblock %}

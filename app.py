@@ -187,16 +187,16 @@ def formulir(uid):
 def dashboard():
   return render_template('dashboard.html')
 
-@app.route('/wilayah_kota')
-@login_required
-def wilayahKota():
-  kota = dataBase.collection('T_Umum_Wilayah_Kota').order_by('Kota', direction = firestore.Query.ASCENDING).stream()
-  kt = []
-  for kot in kota:
-    k = kot.to_dict()
-    k['id'] = kot.id
-    kt.append(k)
-  return render_template('wilayahKota.html', data = kt)
+# @app.route('/wilayah_kota')
+# @login_required
+# def wilayahKota():
+#   kota = dataBase.collection('T_Umum_Wilayah_Kota').order_by('Kota', direction = firestore.Query.ASCENDING).stream()
+#   kt = []
+#   for kot in kota:
+#     k = kot.to_dict()
+#     k['id'] = kot.id
+#     kt.append(k)
+#   return render_template('wilayahKota.html', data = kt)
 
 @app.route('/real_time_database', methods = ['GET', 'POST'])
 @login_required
