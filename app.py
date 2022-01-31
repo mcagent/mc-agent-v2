@@ -412,7 +412,7 @@ def dataExcel():
   if request.method == 'POST':
     file = request.form['importExcel']
     data = pd.read_excel(file)
-  return render_template('dataExcel.html', data = data.to_html())
+  return render_template('dataExcel.html', data = data.to_json())
 
 
 if __name__ == '__main__':
